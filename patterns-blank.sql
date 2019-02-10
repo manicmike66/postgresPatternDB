@@ -63,19 +63,28 @@ COMMENT ON COLUMN public.pattern.patternpublisher IS 'FK';
 
 
 --
--- Name: publisher; Type: TABLE; Schema: public; Owner: patterns
+-- Name: pattern_idpattern_seq; Type: SEQUENCE; Schema: public; Owner: patterns
 --
 
-CREATE TABLE public.publisher (
-    idpublisher integer NOT NULL,
-    publishername character varying(45) NOT NULL
-);
+CREATE SEQUENCE public.pattern_idpattern_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
 
-ALTER TABLE public.publisher OWNER TO patterns;
+ALTER TABLE public.pattern_idpattern_seq OWNER TO patterns;
 
 --
--- Name: publisher_idpublisher_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: pattern_idpattern_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: patterns
+--
+
+ALTER SEQUENCE public.pattern_idpattern_seq OWNED BY public.pattern.idpattern;
+
+
+--
+-- Name: publisher_idpublisher_seq; Type: SEQUENCE; Schema: public; Owner: patterns
 --
 
 CREATE SEQUENCE public.publisher_idpublisher_seq
@@ -86,7 +95,26 @@ CREATE SEQUENCE public.publisher_idpublisher_seq
     CACHE 1;
 
 
-ALTER TABLE public.publisher_idpublisher_seq OWNER TO postgres;
+ALTER TABLE public.publisher_idpublisher_seq OWNER TO patterns;
+
+--
+-- Name: publisher; Type: TABLE; Schema: public; Owner: patterns
+--
+
+CREATE TABLE public.publisher (
+    idpublisher integer DEFAULT nextval('public.publisher_idpublisher_seq'::regclass) NOT NULL,
+    publishername character varying(45) NOT NULL
+);
+
+
+ALTER TABLE public.publisher OWNER TO patterns;
+
+--
+-- Name: pattern idpattern; Type: DEFAULT; Schema: public; Owner: patterns
+--
+
+ALTER TABLE ONLY public.pattern ALTER COLUMN idpattern SET DEFAULT nextval('public.pattern_idpattern_seq'::regclass);
+
 
 --
 -- Data for Name: pattern; Type: TABLE DATA; Schema: public; Owner: patterns
@@ -128,7 +156,14 @@ COPY public.publisher (idpublisher, publishername) FROM stdin;
 
 
 --
--- Name: publisher_idpublisher_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: pattern_idpattern_seq; Type: SEQUENCE SET; Schema: public; Owner: patterns
+--
+
+SELECT pg_catalog.setval('public.pattern_idpattern_seq', 1, true);
+
+
+--
+-- Name: publisher_idpublisher_seq; Type: SEQUENCE SET; Schema: public; Owner: patterns
 --
 
 SELECT pg_catalog.setval('public.publisher_idpublisher_seq', 23, true);
