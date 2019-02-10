@@ -9,6 +9,6 @@ If you're keen, import the sql file on linux thusly:
 5. Go into psql as user postgres:
    CREATE USER patterns WITH PASSWORD 'p@tt3rns';
    GRANT ALL on patterns TO patterns;
-   \i patterns-blank.sql
+   \i patterns-blank.sql;
 ctrl+d to exit psql or \td to list your tables
  
