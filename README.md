@@ -29,4 +29,4 @@ Here are a couple of tips:
    
 I have used the MySQL version in a hosted environment, but that was years ago and the passwords and my attention to security alerts were different then.
 
-If you have trouble uploading images or anything else where you get access denied, change ownership of the files to the owner of the web server. E.g. on Mint, as root, chown -R /var/www/html/*.
+If you have trouble uploading images or anything else where you get access denied, change ownership of the files to the owner of the web server. E.g. on Mint, as root, chown -R www-data /var/www/html/*.
