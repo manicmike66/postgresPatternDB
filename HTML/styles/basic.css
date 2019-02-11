@@ -1,0 +1,27 @@
+body {
+	background: url(../images/butterickL.jpg);
+	margin-top:40px;
+}
+
+#form{
+	font-weight:bold;
+	text-align:center;
+}
+H1,H2,H3,P {
+	text-align:center;
+}
+H1 {
+	font-size:40pt;
+	color:#330000;
+}
+H2{
+	font-size:30pt;
+	color:#330000;
+}
+P {
+	font-weight:bold
+}
+table {
+	margin-left:auto;
+	margin-right:auto;
+}
