@@ -8,13 +8,16 @@ $dbconn = pg_connect($conn_string);
 if (!$dbconn) {
 echo "Error: Unable to open database\n";
 } else {
-echo "<html>\n";
-echo "<head>\n";
-echo "<title>Add New Pattern</title>\n";
-echo '<link rel="stylesheet" type="text/css" href="../styles/basic.css" />';
-echo "</head>\n";
-echo "<body style='background: url(../images/butterickL.jpg);'>\n";
-echo "<h2>Add new pattern</h2>\n";
+//echo "<html>\n";
+//echo "<head>\n";
+//echo "<title>Add New Pattern</title>\n";
+//echo '<link rel="stylesheet" type="text/css" href="../styles/basic.css" />';
+//echo "</head>\n";
+//echo "<body style='background: url(../images/butterickL.jpg);'>\n";
+$title="Add new pattern";
+$bg='butterickL';
+include('../includes/head.php');
+echo "<h2>$title</h2>\n";
 echo "<p>or <a href=\"../index.php\">go back</a>\n";
 echo "<p>Fill in the pattern information and click the Add Pattern button to add it to the database.<br />This directly changes the information and there is no undo";
 if(1 == $_POST['add']){

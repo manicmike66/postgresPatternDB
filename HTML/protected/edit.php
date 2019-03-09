@@ -22,7 +22,7 @@ if(1 == $_GET['delete'])
 	$deleteSQL = "DELETE FROM pattern WHERE idpattern=".$_GET['ID'].";";
 	$ru=pg_query($deleteSQL) or die ('Query failed: ' .pg_last_error());
 	echo '<p>Entry deleted. <a href="../index.php">Go back to the index</a></p>';
-	echo "</body>\n</html>";
+	echo '</body>\n</html>';
 	exit();
 	}
 elseif(1 == $_POST['update']){
