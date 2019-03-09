@@ -8,20 +8,14 @@ $dbconn = pg_connect($conn_string);
 if (!$dbconn) {
 echo "Error: Unable to open database\n";
 } else {
-//echo "<html>\n";
-//echo "<head>\n";
-//echo "<title>Add New Pattern</title>\n";
-//echo '<link rel="stylesheet" type="text/css" href="../styles/basic.css" />';
-//echo "</head>\n";
-//echo "<body style='background: url(../images/butterickL.jpg);'>\n";
 $title="Add new pattern";
 $bg='butterickL';
 include('../includes/head.php');
-echo "<h2>$title</h2>\n";
-echo "<p>or <a href=\"../index.php\">go back</a>\n";
-echo "<p>Fill in the pattern information and click the Add Pattern button to add it to the database.<br />This directly changes the information and there is no undo";
+echo '<h2>'.$title.'</h2>
+<p>or <a href="../index.php">go back</a>
+<p>Fill in the pattern information and click the Add Pattern button to add it to the database.<br />This directly changes the information and there is no undo';
 if(1 == $_POST['add']){
-$updateSQL = 'INSERT INTO pattern (patternpublisher,patternnum,patternsize,patternbust,patternwaist,patternhips,patternera,patterngender,patterndesc,patternorigprice,patternnotes) VALUES ('.$_POST['publisher'].',\''.$_POST['patternnum'].'\',\''.$_POST['size'].'\',\''.$_POST['bust'].'\',\''.$_POST['waist'].'\',\''.$_POST['hips'].'\',\''.$_POST['era'].'\',\''.$_POST['Gender'].'\',\''.$_POST['desc'].'\',\''.$_POST['op'].'\',\''.$_POST['notes'].'\');';
+$updateSQL = 'INSERT INTO pattern (patternpublisher,patternnum,patternsize,patternbust,patternwaist,patternhips,patternera,patterngender,patterndesc,patternorigprice,patternnotes) VALUES ('.$_POST['publisher'].',\''.$_POST['patternnum'].'\',\''.$_POST['size'].'\',\''.$_POST['bust'].'\',\''.$_POST['waist'].'\',\''.$_POST['hips'].'\',\''.$_POST['era'].'\',\''.$_POST['Gender'].'\',\''.htmlentities($_POST['desc'], ENT_QUOTES).'\',\''.$_POST['op'].'\',\''.htmlentities($_POST['notes'], ENT_QUOTES).'\');';
 $rs= pg_query($dbconn, $updateSQL);
 echo "pattern entry updated<br />\n<a href=\"../index.php\">Go back</a><br />\n";
 }
