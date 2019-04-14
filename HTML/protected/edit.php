@@ -26,7 +26,7 @@ if(1 == $_GET['delete'])
 	exit();
 	}
 elseif(1 == $_POST['update']){
-$updateSQL = 'UPDATE pattern SET patternpublisher='.$_POST['publisher'].',patternnum=\''.$_POST['patternnum'].'\',patternsize=\''.$_POST['size'].'\',patternbust=\''.$_POST['bust'].'\',patternwaist=\''.$_POST['waist'].'\',patternhips=\''.$_POST['hips'].'\',patternera=\''.$_POST['era'].'\',patterngender=\''.$_POST['Gender'].'\',patterndesc=\''.$_POST['desc'].'\',patternnotes=\''.$_POST['notes'].'\' WHERE idpattern='.$_POST['id'];
+$updateSQL = 'UPDATE pattern SET patternpublisher='.$_POST['publisher'].',patternnum=\''.$_POST['patternnum'].'\',patternsize=\''.$_POST['size'].'\',patternbust=\''.$_POST['bust'].'\',patternwaist=\''.$_POST['waist'].'\',patternhips=\''.$_POST['hips'].'\',patternera=\''.$_POST['era'].'\',patterngender=\''.$_POST['Gender'].'\',patterndesc=\''.pg_escape_string($_POST['desc']).'\',patternnotes=\''.$_POST['notes'].'\' WHERE idpattern='.$_POST['id'];
 $rt=pg_query($updateSQL) or die ('Query failed: ' .pg_last_error());
 echo "Your pattern has been updated. <br/><a href=\"../index.php\">Go back</a>";
 exit();

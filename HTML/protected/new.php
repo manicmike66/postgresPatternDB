@@ -15,42 +15,44 @@ echo '<h2>'.$title.'</h2>
 <p>or <a href="../index.php">go back</a>
 <p>Fill in the pattern information and click the Add Pattern button to add it to the database.<br />This directly changes the information and there is no undo';
 if(1 == $_POST['add']){
-$updateSQL = 'INSERT INTO pattern (patternpublisher,patternnum,patternsize,patternbust,patternwaist,patternhips,patternera,patterngender,patterndesc,patternorigprice,patternnotes) VALUES ('.$_POST['publisher'].',\''.$_POST['patternnum'].'\',\''.$_POST['size'].'\',\''.$_POST['bust'].'\',\''.$_POST['waist'].'\',\''.$_POST['hips'].'\',\''.$_POST['era'].'\',\''.$_POST['Gender'].'\',\''.htmlentities($_POST['desc'], ENT_QUOTES).'\',\''.$_POST['op'].'\',\''.htmlentities($_POST['notes'], ENT_QUOTES).'\');';
+$updateSQL = 'INSERT INTO pattern (patternpublisher,patternnum,patternsize,patternbust,patternwaist,patternhips,patternera,patterngender,patterndesc,patternorigprice,patternnotes) VALUES ('.$_POST['publisher'].',\''.$_POST['patternnum'].'\',\''.$_POST['size'].'\',\''.$_POST['bust'].'\',\''.$_POST['waist'].'\',\''.$_POST['hips'].'\',\''.$_POST['era'].'\',\''.$_POST['Gender'].'\',\''.pg_escape_string($_POST['desc']).'\',\''.pg_escape_string($_POST['op']).'\',\''.pg_escape_string($_POST['notes']).'\');';
 $rs= pg_query($dbconn, $updateSQL);
-echo "pattern entry updated<br />\n<a href=\"../index.php\">Go back</a><br />\n";
+echo 'pattern entry updated<br />
+	<a href="../index.php">Go back</a><br />
+';
 }
 $Sql2="SELECT * FROM publisher";
 $thisID="new.php";
-echo '<form action="'.$thisID.'" method="post">';
-echo "<table border width=\"100%\">\n";
-echo "<tr><th>Publisher</th><th>Number</th><th>Size</th><th>Bust</th><th>Waist</th><th>Hips</th><th>Era</th><th>Gender</th><th>Description</th><th>Orig Price</th><th>Notes</th>\n";
+echo '<form action="'.$thisID.'" method="post">
+<table border width="100%">
+<tr><th>Publisher</th><th>Number</th><th>Size</th><th>Bust</th><th>Waist</th><th>Hips</th><th>Era</th><th>Gender</th><th>Description</th><th>Orig Price</th><th>Notes</th>';
 $rr = pg_query($Sql2);
-$selectPub = '<select name="publisher">';
+$selectPub = '<select name="publisher">
+';
   while($aRow = pg_fetch_assoc($rr)){
     $selectPub .= $aRow['idpublisher']."<option ";
     if($aRow["idpublisher"] == 11) {$selectPub .= "SELECTED ";}
     $selectPub .= "value=".$aRow['idpublisher'].">".$aRow['publishername']."</option>";
     }
-$selectPub .= "</select>";
-    echo "<tr><td>".$selectPub . '</td>';
-    echo "<td><input type=\"text\" size=\"4\" name=\"patternnum\" /></td>" ;
-    echo "<td><input type=\"text\" size=\"4\" name=\"size\" /></td>";
-    echo "<td><input type=\"text\" size=\"4\" name=\"bust\" /></td>";
-    echo "<td><input type=\"text\" size=\"4\" name=\"waist\" /></td>";
-    echo "<td><input type=\"text\" size=\"4\" name=\"hips\" /></td>";
-    echo "<td><input type=\"text\" name=\"era\" /></td>";
-    echo "<td><input type=\"text\" size=\"8\" name=\"Gender\" /></td>";
-    echo "<td><input type=\"text\" name=\"desc\" /></td>";
-    echo "<td><input type=\"text\" size=\"6\" name=\"op\" /></td>";
-    echo "<td><input type=\"text\" name=\"notes\" /></td>";
-    echo "</tr>\n";
-#}
-echo "</table>\n";
-echo "<input type='hidden' name='add' value='1'></input>";
-echo '<input type="submit" Value="Add pattern" />';
-echo "</form>\n";
-#}
-echo "</body>\n";
-echo "</html>";
+$selectPub .= '</select>';
+echo '<tr><td>'.$selectPub . '</td>
+    <td><input type="text" size="4" name="patternnum" /></td>" ;
+    <td><input type="text" size="4" name="size" /></td>
+    <td><input type="text" size="4" name="bust" /></td>
+    <td><input type="text" size="4" name="waist" /></td>
+    <td><input type="text" size="4" name="hips" /></td>
+    <td><input type="text" name="era" /></td>
+    <td><input type="text" size="8" name="Gender" /></td>
+    <td><input maxlength="145" type="text" name="desc" /></td>
+    <td><input type="text" size="6" name="op" /></td>
+    <td><input type="text" name="notes" /></td>
+    </tr>
+';
+echo '</table>
+<input type="hidden" name="add" value="1"></input>
+<input type="submit" Value="Add pattern" />
+</form>
+</body>
+</html>';
 }
 ?>
