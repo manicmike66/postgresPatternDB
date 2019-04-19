@@ -25,3 +25,7 @@ table {
 	margin-left:auto;
 	margin-right:auto;
 }
+.breadcrumb > li + li:before {
+	content: " | ";
+	padding: 0 1rem;
+}
