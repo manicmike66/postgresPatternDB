@@ -57,8 +57,11 @@ echo '<h2>Results from the database: '.$rows_returned.' </h2>
   <input type="submit" value="Submit">
 </form>-->
 <input id="pInput" type="text" placeholder="Search all cells">';
+if($_GET['gender'] == 'Male' || $_GET['gender'] == 'Boy') {$chestName='Chest';}
+elseif($_GET['gender'] == 'Female') {$chestName='Bust';}
+else { $chestName='Bust/Chest'; }
 echo "<table class=\"table table-sm table-hover\" border width=\"100%\">\n";
-echo '<thead class="thead-light"><tr><th class="text-center">DB ID</th><th class="text-center">Publisher</th><th class="text-center">Number<br />(image)</th><th class="text-center">Size</th><th class="text-center">Bust<br/>(Chest)</th><th class="text-center">Waist</th><th class="text-center">Hips</th><th class="text-center">Era</th><th class="text-center">Gender</th><th class="text-center">Description</th><th class="text-center">Notes</th></tr></thead>
+echo '<thead class="thead-light"><tr><th class="text-center">DB ID</th><th class="text-center">Publisher</th><th class="text-center">Number<br />(image)</th><th class="text-center">Size</th><th class="text-center">'.$chestName.'</th><th class="text-center">Waist</th><th class="text-center">Hips</th><th class="text-center">Era</th><th class="text-center">Gender</th><th class="text-center">Description</th><th class="text-center">Notes</th></tr></thead>
 	<tbody id="pTable">';
 while($row = pg_fetch_assoc($rs)){
 	$pub=$row['patterngender'];
