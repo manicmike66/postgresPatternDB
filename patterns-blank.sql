@@ -129,29 +129,30 @@ COPY public.pattern (idpattern, patternpublisher, patternnum, patternsize, patte
 --
 
 COPY public.publisher (idpublisher, publishername) FROM stdin;
-1	Anne Adams
-2	Blackmore
-3	Burda
-4	Butterick
-5	Fashion
-6	Kwik Sew
-7	Maudella
-8	McCalls
-9	Paragon
-10	Pauline
-11	Simplicity
-12	Style
-13	Vogue
-14	Weigels
-15	Academy
-16	Womans Day
-17	Australian Home Journal
-18	Marian Martin
-19	Womans World
-20	Favorite Pattern Service
-21	Multisize Pattern
-22	English Woman
-23	Pictorial Review
+1	Academy
+2	Advance
+3	Anne Adams
+4	Australian Home Journal
+5	Blackmore
+6	Burda
+7	Butterick
+8	English Woman
+9	Fashion
+10	Favorite Pattern Service
+11	Kwik Sew
+12	Marian Martin
+13	Maudella
+14	McCalls
+15	Multisize Pattern
+16	Paragon
+17	Pauline
+18	Pictorial Review
+19	Simplicity
+20	Style
+21	Vogue
+22	Weigels
+23	Womans Day
+24	Womans World
 \.
 
 
