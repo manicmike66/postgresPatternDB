@@ -29,3 +29,42 @@ table {
 	content: " | ";
 	padding: 0 1rem;
 }
+.gender{
+    opacity:0.7;
+}
+
+.male {
+    background-color: #ccccff;
+}
+
+.female {
+    background-color: pink;
+}
+
+.child {
+    background-color: #ffccff;
+}
+
+.baby {
+    background-color: #ffcccc;
+}
+
+.girl {
+    background-color: #c7ef8a;
+}
+
+.decor {
+    background-color: #ffff66;
+}
+
+.toddler {
+    background-color: #ff6600;
+}
+
+.doll {
+    background-color: #ff66ff;
+}
+
+.either {
+    background-color: #ffffcc;
+}
