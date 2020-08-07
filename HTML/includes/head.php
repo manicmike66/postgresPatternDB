@@ -1,11 +1,10 @@
 <!doctype html>
 <html lang="en">
-<html>
 <head>
 <title> <?php echo $title; ?> </title>
-<link rel="stylesheet" type="text/css" href="/styles/basic.css" />
-<link href="/styles/bootstrap.min.css" rel="stylesheet" />
-<script src="/js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/patterns/styles/basic.css" />
+<link href="/patterns/styles/bootstrap.min.css" rel="stylesheet" />
+<script src="/patterns/js/jquery-3.3.1.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <script>
@@ -19,7 +18,7 @@ $(document).ready(function(){
 });
 </script>
 </head>
-<body style="background: url('/images/<?php echo $bg;?>.jpg');">
+<body style="background: url('/patterns/images/<?php echo $bg;?>.jpg');">
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb bg-info">
 <?php 

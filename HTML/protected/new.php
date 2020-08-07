@@ -21,7 +21,7 @@ echo 'pattern entry updated<br />
 	<a href="../index.php">Go back</a><br />
 ';
 }
-$Sql2="SELECT * FROM publisher";
+$Sql2="SELECT * FROM publisher order by puborder";
 $thisID="new.php";
 echo '<form action="'.$thisID.'" method="post">
 <table border width="100%">
@@ -36,7 +36,7 @@ $selectPub = '<select name="publisher">
     }
 $selectPub .= '</select>';
 echo '<tr><td>'.$selectPub . '</td>
-    <td><input type="text" size="4" name="patternnum" /></td>" ;
+    <td><input type="text" size="4" name="patternnum" /></td>
     <td><input type="text" size="4" name="size" /></td>
     <td><input type="text" size="4" name="bust" /></td>
     <td><input type="text" size="4" name="waist" /></td>
@@ -49,7 +49,7 @@ echo '<tr><td>'.$selectPub . '</td>
     </tr>
 ';
 echo '</table>
-<input type="hidden" name="add" value="1"></input>
+<input type="hidden" name="add" value="1" />
 <input type="submit" Value="Add pattern" />
 </form>
 </body>
